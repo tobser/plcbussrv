@@ -18,6 +18,8 @@ currently the project requires to use qt5 qmake. It's located in /usr/lib/qt5/bi
 
 To install the server run:
 
+ git clone https://github.com/tobser/plcbussrv
+ cd plcbussrv
  /usr/lib/qt5/bin/qmake
  make
  sudo make install
