@@ -30,7 +30,7 @@ void Serial::handleReadyRead()
 {
     while (m_serialPort.bytesAvailable() >= 9){
         QByteArray d = m_serialPort.read(9);
-        INFO("<B " + QString(d.toHex()));
+        INFO("RX PLC " + QString(d.toHex()));
         emit (newData(d));
     }
 }
@@ -38,7 +38,7 @@ void Serial::handleReadyRead()
 void Serial::writeToDevice(QByteArray data)
 {
     m_serialPort.write(data);
-    INFO(">B " + QString(data.toHex()));
+    INFO("TX PLC " + QString(data.toHex()));
     // docs for 1141 state to write twice to bus with a delay of
     // 12.5ms in between, but I could not notice any difference
     // in the systems behavior... 
