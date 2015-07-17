@@ -50,7 +50,7 @@ void TcpServ::onClientReadyRead()
     QTcpSocket* client = (QTcpSocket*) sender();
     QByteArray data = client->read(8);
 
-    INFO("<"+ getClientAddressStr(client) +" " + QString(data.toHex()));
+    INFO("RX CLI " + QString(data.toHex()) + "    " + getClientAddressStr((client)));
     emit(newData(data));
 }
 
@@ -58,7 +58,7 @@ void TcpServ::distributeData(QByteArray data){
     QList<QTcpSocket*>::iterator i;
     for (i = m_clients.begin(); i != m_clients.end(); ++i)
     {
-        INFO(">"+ getClientAddressStr((*i)) + " " + QString(data.toHex()));
+        INFO("TX CLI " + QString(data.toHex()) + "  " + getClientAddressStr((*i)));
         (*i)->write(data);
     }
 }
